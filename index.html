@@ -109,8 +109,8 @@
 
         //價錢轉換end
 
-		$(document).ready(function (){
-        			initializeLiff(1657103560-L9092REa);
+		$(document).ready(function (liffID){
+        			initializeLiff();
 			});
          $('#btn_reserve').click(function() { //按下確定送出
             reserve($('#sel_type option:selected').text(), $('#sel_amount').val());
