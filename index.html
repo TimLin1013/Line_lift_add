@@ -41,6 +41,7 @@
                 ]);
             }).then(() => {
                 console.log('訊息已發送');
+                liff.closeWindow();
             }).catch((err) => {
                 console.error('訊息發送失敗', err);
             });
