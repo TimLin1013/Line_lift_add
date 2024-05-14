@@ -41,14 +41,11 @@
                 ]);
             }).then(() => {
                 console.log('訊息已發送');
-                liff.openWindow({
-                  url: "https://line.me",
-                  external: false,
-                });
+               liff.closeWindow();
             }).catch((err) => {
                 console.error('訊息發送失敗', err);
             });
-            liff.closeWindow();
+
         }
     </script>
 </body>
