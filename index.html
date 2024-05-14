@@ -11,6 +11,7 @@
         <input type="text" id="movie_input" class="form-control" placeholder="輸入電影名稱" style="margin-bottom: 10px;width: 100%;height: 40px;border-radius: 10px;padding: 10px;font-size: 16px;border: 1px solid #ced4da;">
         <button id="btn_reserve" class="btn btn-primary" style="width: 100%;height: 40px;border-radius: 10px;font-size: 16px;">購買</button>
     </div>
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
     <script>
         var liffID = '2004983305-Wxv3l2rx';
 
@@ -22,9 +23,28 @@
                     return;
                 }
                 var msg = "###" + movieName + "/1/"; // Assuming 1 ticket
-                // Handle your message sending logic here
+                reserve(msg);
             });
         });
+
+        function reserve(msg) {
+            liff.init({
+                liffId: liffID
+            }).then(() => {
+                var isInClient = liff.isInClient();
+                console.log('isInClient', isInClient);
+                return liff.sendMessages([
+                    {
+                        type: 'text',
+                        text: msg
+                    }
+                ]);
+            }).then(() => {
+                console.log('訊息已發送');
+            }).catch((err) => {
+                console.error('訊息發送失敗', err);
+            });
+        }
     </script>
 </body>
 </html>
